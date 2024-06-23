@@ -17,7 +17,7 @@ body{
 #header{
     width: 100%;
     height: 100vh;
-    background-image: url(Images/Website\ Header.png);
+    background-image: url(Images/Website_Header.png);
     background-size: cover;
     background-position: center;
 }
@@ -290,13 +290,13 @@ nav ul li a:hover::after{
 }
 
 .social-box:nth-child(odd) .layer2 {
-    background-image: url('Website Social Icons/Red.png');
+    background-image: url('Social_Icons/Red.png');
     background-size: cover; /* or contain, depending on your desired effect */
     background-position: center; /* Center the image */
 }
 
 .social-box:nth-child(even) .layer2 {
-    background-image: url('Website Social Icons/Blue.png');
+    background-image: url('Social_Icons/Blue.png');
     background-size: cover; /* or contain, depending on your desired effect */
     background-position: center; /* Center the image */
 }
@@ -376,7 +376,7 @@ form .btn2{
     width: 100%;
     text-align: center;
     padding: 25px 0;
-    background-image: url('images/Red-Blue Background.jpg');
+    background-image: url('Images/RedBlue_Background.jpg');
     background-size: cover; /* or contain, depending on your desired effect */
     background-position: center; /* Center the image */
     background-repeat: no-repeat; /* Prevent the image from repeating */
