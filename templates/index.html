@@ -9,24 +9,40 @@
     <link rel="stylesheet" href="static/style.css">
 </head>
 <body>
-<div id="header">
+
+    <div id="header">
+        <div class="nav-container">
+            <nav>
+                <a href="#home">
+                    <img src="static/Images/JC.png" class="logo">
+                </a>
+                <ul id="phonemenu">
+                    <div id="close"class="click">
+                        <img src="static/Images/JC.png" onclick="closemenu()">
+                    </div>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#portfolio">Portfolio</a></li>
+                    <li><a href="#socials">Socials</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <div id="open" class="click">
+                    <img src="static/Images/JC.png"  onclick="openmenu()">
+                </div>
+            </nav>
+        </div>
+    </div>
+    
+
+<div id="home">
     <div class="container">
-        <nav>
-            <img src="static/Images/JC.png" class="logo">
-            <ul>
-                <li><a href="#header">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#portfolio">Portfolio</a></li>
-                <li><a href="#socials">Socials</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
         <div class="header-text">
             <p>Computer Engineer</p>
             <h1><span>Joseph</span> <span2>Casino</span2></h1>
         </div>
     </div>
 </div>
+    
 <!-----------------------about------------------->
 <div id="about">
     <div class="container">
@@ -208,19 +224,17 @@
                     <span>Joseph Michael-Casino</span>
                 </div>
             </a>
-            <a href="#" target="_blank" class="social-box">
+            <div class="social-box">
                 <img src="static/Social_Icons/10.png">
                 <div class="layer2">
                     <h2>Pokemon Go</h2>
                     <p>Day 1 Player, Level 41, 816 Caught in Pokedex </p>
                     <span>Trainer Code: 1251 8088 6965</span>
                 </div>
-            </a>
+            </div>
         </div>
     </div>
 </div>
-
-
 
 
 <!----------contact------>
@@ -232,7 +246,6 @@
                 <p>josephcasino88@gmail.com</p>
                 <p>773-844-1041</p>
                 <div class="social-icons">
-                    <!---- ICON PICTURES FROM WEBSITE GO HERE Go to 1:10:00-->
                 </div>
                 <a href="static/Joseph_Casino_Resume_SP24.pdf" download class="btn btn2">Download Joseph Casino's Resume</a>
             </div>
@@ -255,6 +268,28 @@
 
 
 
+
+
+<script>
+    document.querySelectorAll('nav ul li a').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+
+            const targetId = this.getAttribute('href').substring(1);
+            const targetElement = document.getElementById(targetId);
+            const headerOffset = document.querySelector('nav').offsetHeight;
+            const elementPosition = targetElement.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+            window.scrollTo({
+                top: offsetPosition,
+                behavior: 'smooth'
+            });
+        });
+    });
+</script>
+
+
 <script>
 
     var tablinks = document.getElementsByClassName("tab-links");
@@ -272,6 +307,41 @@
     }
 
 </script>
+
+
+<script>
+    var phonemenu = document.getElementById("phonemenu");
+    var openclick = document.getElementById("open");
+    var closeclick = document.getElementById("close");
+
+    function openmenu() {
+        phonemenu.style.display = "block";
+        openclick.style.display = "none";
+        closeclick.style.display = "block";
+    }
+
+    function closemenu() {
+        phonemenu.style.display = "none";
+        openclick.style.display = "block";
+        closeclick.style.display = "none";
+    }
+
+    window.addEventListener('resize', function () {
+        if (window.innerWidth > 800) {
+            phonemenu.style.display = "block";
+            openclick.style.display = "none";
+            closeclick.style.display = "none";
+        } else {
+            phonemenu.style.display = "none";
+            openclick.style.display = "block";
+            closeclick.style.display = "none";
+        }
+    })
+
+</script>
+
+
+
 <script>
     const scriptURL = 'https://script.google.com/macros/s/AKfycbwSoSsLYrVtpNyfQXjS7D5I4TIleF0uIjz1uC3u7a1HLdRMJP9hs7-D_TWmDptOIsvRrA/exec'
     const form = document.forms['submit-to-google-sheet']
