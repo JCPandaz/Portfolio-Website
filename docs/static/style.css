@@ -58,6 +58,20 @@ img {
     max-width: 100%;
 }
 
+main,
+.container,
+.nav-container,
+.work,
+.experience-card,
+.detail-card,
+.info-card,
+.skill-card,
+.education-card,
+.social-box,
+.contact-links a {
+    min-width: 0;
+}
+
 main {
     flex: 1;
 }
@@ -93,7 +107,7 @@ textarea {
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 1000;
+    z-index: 5000;
     width: 100%;
 }
 
@@ -148,6 +162,8 @@ nav::after {
     align-items: center;
     flex: 0 0 auto;
     text-decoration: none;
+    position: relative;
+    z-index: 2;
 }
 
 .logo {
@@ -176,6 +192,7 @@ nav::after {
     font-size: 0.88rem;
     font-weight: 800;
     letter-spacing: 0;
+    white-space: nowrap;
     transition: background 0.2s ease, transform 0.2s ease;
 }
 
@@ -199,6 +216,8 @@ nav::after {
     color: #ffffff;
     background: rgba(0, 0, 0, 0.18);
     cursor: pointer;
+    position: relative;
+    z-index: 2;
 }
 
 .menu-toggle span {
@@ -1590,6 +1609,7 @@ form .btn2 {
     nav {
         min-height: 58px;
         padding: 8px;
+        overflow: visible;
     }
 
     .logo {
@@ -1607,24 +1627,30 @@ form .btn2 {
         left: 0;
         right: 0;
         display: none;
-        padding: 10px;
+        z-index: 10;
+        padding: 12px;
         border: 1px solid rgba(255, 255, 255, 0.17);
         border-radius: var(--radius);
-        background: rgba(8, 9, 15, 0.94);
+        background:
+            linear-gradient(135deg, rgba(255, 64, 72, 0.14), rgba(24, 216, 240, 0.14)),
+            rgba(8, 9, 15, 0.97);
         box-shadow: var(--shadow);
         backdrop-filter: blur(18px);
     }
 
     .nav-links.is-open {
         display: grid;
-        gap: 2px;
+        gap: 6px;
     }
 
     .nav-links a {
         display: flex;
         width: 100%;
-        padding: 10px 12px;
+        min-height: 46px;
+        padding: 12px 14px;
         font-size: 0.94rem;
+        justify-content: center;
+        white-space: normal;
     }
 
     .hero {
@@ -1669,6 +1695,10 @@ form .btn2 {
         grid-template-columns: 1fr;
     }
 
+    .experience-card {
+        justify-items: start;
+    }
+
     .route-section,
     .featured-section,
     .content-section {
@@ -1687,6 +1717,13 @@ form .btn2 {
     .work img,
     .project-visual {
         height: 250px;
+    }
+
+    .project-media,
+    .project-media img,
+    .experience-photo-slot,
+    .education-logo-grid .education-logo-slot {
+        min-height: 320px;
     }
 
     .experience-meta {
@@ -1744,13 +1781,28 @@ form .btn2 {
         width: min(100% - 24px, 460px);
     }
 
+    .nav-container {
+        width: min(100% - 16px, 460px);
+    }
+
+    nav {
+        border-radius: 10px;
+    }
+
+    .logo {
+        width: 42px;
+        height: 42px;
+    }
+
     .header-text h1 {
-        font-size: 3.25rem;
+        font-size: clamp(2.85rem, 18vw, 3.25rem);
+        overflow-wrap: anywhere;
     }
 
     .page-copy h1,
     .sub-title {
-        font-size: 2.25rem;
+        font-size: clamp(2rem, 12vw, 2.25rem);
+        overflow-wrap: anywhere;
     }
 
     .hero-actions {
@@ -1782,7 +1834,21 @@ form .btn2 {
     }
 
     .social-box {
+        flex-basis: min(100%, 190px);
         min-height: 134px;
+    }
+
+    .work {
+        min-height: 340px;
+    }
+
+    .work img,
+    .project-visual {
+        height: 220px;
+    }
+
+    .project-highlight-title {
+        font-size: clamp(3.2rem, 18vw, 5rem);
     }
 
     .contact-right form {

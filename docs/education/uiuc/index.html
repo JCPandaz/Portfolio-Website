@@ -187,15 +187,38 @@
         const navLinks = document.getElementById('phonemenu');
 
         function setMenu(open) {
+            if (!menuToggle || !navLinks) {
+                return;
+            }
+
             navLinks.classList.toggle('is-open', open);
             menuToggle.classList.toggle('is-open', open);
             menuToggle.setAttribute('aria-expanded', String(open));
             menuToggle.setAttribute('aria-label', open ? 'Close navigation' : 'Open navigation');
         }
 
-        menuToggle.addEventListener('click', () => {
-            setMenu(!navLinks.classList.contains('is-open'));
-        });
+        if (menuToggle && navLinks) {
+            menuToggle.addEventListener('click', event => {
+                event.stopPropagation();
+                setMenu(!navLinks.classList.contains('is-open'));
+            });
+
+            navLinks.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => setMenu(false));
+            });
+
+            document.addEventListener('click', event => {
+                if (!event.target.closest('.site-header')) {
+                    setMenu(false);
+                }
+            });
+
+            document.addEventListener('keydown', event => {
+                if (event.key === 'Escape') {
+                    setMenu(false);
+                }
+            });
+        }
 
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', event => {
