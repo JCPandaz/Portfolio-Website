@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block title %}Projects | {{ profile.name }}{% endblock %}
+
+{% block content %}
+<section class="page-hero compact-hero">
+    <div class="container page-copy reveal">
+        <h1>Projects</h1>
+    </div>
+</section>
+
+<section class="content-section">
+    <div class="container work-list">
+        {% for project in projects %}
+        <a href="{{ url_for('project_detail', slug=project.slug) }}" class="work reveal {% if project.featured %}is-featured{% endif %}">
+            {% if project.image %}
+            <img src="{{ project.image }}" alt="{{ project.title }}">
+            {% else %}
+            <div class="project-visual">
+                <span>{{ project.category }}</span>
+                <strong>{{ project.title }}</strong>
+            </div>
+            {% endif %}
+            <div class="layer">
+                <span class="card-kicker">{{ project.category }}</span>
+                <h3>{{ project.title }}</h3>
+                <p>{{ project.summary }}</p>
+                <div class="tag-row">
+                    {% for tag in project.tags[:3] %}
+                    <span>{{ tag }}</span>
+                    {% endfor %}
+                </div>
+            </div>
+        </a>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}

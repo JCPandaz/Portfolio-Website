@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+
+{% block title %}About | {{ profile.name }}{% endblock %}
+
+{% block content %}
+<section class="page-hero">
+    <div class="container page-hero-grid">
+        <div class="page-copy reveal">
+            <h1>About</h1>
+            <p>I am an organized, adaptable leader with a strong passion for hardware development, automation and robotics and product innovation. My journey into computer engineering began with a fascination for PC peripherals and content creation, sparking a deep interest in how technology shapes our everyday lives.</p>
+            <p>I thrive on challenging experiences and opportunities to collaborate with diverse communities, continually expanding my skills and perspectives. With a focus on innovation, problem-solving, and project development, I aim to grow both personally and professionally through impactful full-time opportunities and leadership roles, with the overarching goal to contribute to cutting-edge advancements in the technology industry.</p>
+            <div class="hero-actions">
+                <a href="{{ url_for('experience') }}" class="btn">Experience</a>
+                <a href="{{ url_for('education') }}" class="btn">Education</a>
+                <a href="#skills" class="btn btn2">Skills</a>
+            </div>
+        </div>
+        <figure class="portrait-frame reveal">
+            <img src="/static/Images/Joseph_Casino_Headshot.jpg" alt="Joseph Casino headshot">
+        </figure>
+    </div>
+</section>
+
+<section class="content-section">
+    <div class="container">
+        <div class="info-grid about-link-grid">
+            <a class="info-card reveal" href="{{ url_for('experience') }}">
+                <span>Now</span>
+                <h3>Safety Services Engineer</h3>
+            </a>
+            <a class="info-card reveal" href="{{ url_for('education') }}">
+                <span>Degree</span>
+                <h3>B.S. Computer Engineering with a Business Minor</h3>
+            </a>
+        </div>
+    </div>
+</section>
+
+<section id="skills" class="content-section">
+    <div class="container">
+        <div class="section-heading reveal">
+            <h2 class="sub-title">Skills</h2>
+        </div>
+        <div class="skill-grid page-grid">
+            {% for group in skills %}
+            <article class="skill-card reveal">
+                <h3>{{ group.title }}</h3>
+                <div class="skill-chips">
+                    {% for item in group["items"] %}
+                    <span>{{ item }}</span>
+                    {% endfor %}
+                </div>
+            </article>
+            {% endfor %}
+        </div>
+        <div class="interest-card reveal">
+            <h3>Interests & Hobbies</h3>
+            <div class="skill-chips">
+                <span>Basketball</span>
+                <span>Dodgeball</span>
+                <span>Gaming</span>
+                <span>Guitar</span>
+                <span>Ice Skating</span>
+                <span>Legos</span>
+                <span>Singing</span>
+                <span>Theatre</span>
+                <span>Trading Card Collecting</span>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

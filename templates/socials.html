@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}Socials | {{ profile.name }}{% endblock %}
+
+{% block content %}
+<section class="page-hero compact-hero">
+    <div class="container page-copy reveal">
+        <h1>Socials</h1>
+    </div>
+</section>
+
+<section class="content-section">
+    <div class="container socials-list social-page-grid">
+        {% for social in socials %}
+        <a href="{{ social.href }}" target="_blank" rel="noopener" class="social-box reveal">
+            <img src="{{ social.icon }}" alt="{{ social.name }}">
+            <span class="social-name">{{ social.name }}</span>
+            <span class="social-handle">{{ social.handle }}</span>
+        </a>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}

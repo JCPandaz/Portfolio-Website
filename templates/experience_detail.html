@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block title %}{{ experience.title }} | {{ profile.name }}{% endblock %}
+
+{% block content %}
+<section class="page-hero compact-hero">
+    <div class="container page-copy reveal">
+        <a href="{{ url_for('experience') }}" class="back-link">Back to Experience</a>
+        <h1>{{ experience.title }}</h1>
+        <p>{{ experience.organization }} | {{ experience.employment }}</p>
+    </div>
+</section>
+
+<section class="content-section">
+    <div class="container experience-detail-layout">
+        <article class="experience-detail-card reveal">
+            <span>{{ experience.date }}</span>
+            <h2>{{ experience.organization }}</h2>
+            <p>{{ experience.location }}{% if experience.workplace %} | {{ experience.workplace }}{% endif %}</p>
+
+            {% if experience.bullets %}
+            <ul>
+                {% for bullet in experience.bullets %}
+                <li>{{ bullet }}</li>
+                {% endfor %}
+            </ul>
+            {% else %}
+            <p>{{ experience.summary }}</p>
+            {% endif %}
+
+        </article>
+
+        {% set media_items = experience.images if experience.images else ([experience.logo] if experience.logo else []) %}
+        {% if media_items %}
+        <div class="experience-image-grid experience-media-grid reveal" aria-label="Experience media">
+            {% for photo in media_items %}
+            <div class="image-placeholder experience-photo-slot {% if not experience.images %}is-logo{% endif %}">
+                <img src="{{ photo }}" alt="{{ experience.title }} photo {{ loop.index }}">
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+    </div>
+</section>
+{% endblock %}

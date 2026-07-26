@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+
+{% block title %}{{ education_item.title }} | {{ profile.name }}{% endblock %}
+
+{% block content %}
+<section class="page-hero compact-hero">
+    <div class="container page-copy reveal">
+        <a href="{{ url_for('education') }}" class="back-link">Back to Education</a>
+        <h1>{{ education_item.title }}</h1>
+        <p>{{ education_item.short }}{% if education_item.minor %} | {{ education_item.minor }}{% endif %}</p>
+    </div>
+</section>
+
+<section class="content-section">
+    <div class="container education-detail-layout">
+        <article class="education-detail-card reveal">
+            <span>{{ education_item.date }}</span>
+            <h2>{{ education_item.short }}</h2>
+            {% if education_item.minor %}
+            <p>{{ education_item.minor }}</p>
+            {% endif %}
+
+            {% if education_item.engineering_classes or education_item.business_classes %}
+            <div class="education-detail-section">
+                <h3>Classes</h3>
+                <div class="class-dropdowns">
+                    {% if education_item.engineering_classes %}
+                    <details class="class-dropdown">
+                        <summary>Engineering Classes</summary>
+                        <ul class="class-list">
+                            {% for class_name in education_item.engineering_classes %}
+                            <li>{{ class_name }}</li>
+                            {% endfor %}
+                        </ul>
+                    </details>
+                    {% endif %}
+                    {% if education_item.business_classes %}
+                    <details class="class-dropdown">
+                        <summary>Business Classes</summary>
+                        <ul class="class-list">
+                            {% for class_name in education_item.business_classes %}
+                            <li>{{ class_name }}</li>
+                            {% endfor %}
+                        </ul>
+                    </details>
+                    {% endif %}
+                </div>
+            </div>
+            {% endif %}
+
+            {% if education_item.ap_classes %}
+            <div class="education-detail-section">
+                <h3>AP Classes</h3>
+                <ul class="class-list">
+                    {% for class_name in education_item.ap_classes %}
+                    <li>{{ class_name }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endif %}
+
+            <div class="education-detail-section">
+                <h3>Extracurriculars</h3>
+                <div class="extracurricular-list">
+                    {% for item in education_item.extracurriculars %}
+                    <span>{{ item }}</span>
+                    {% endfor %}
+                </div>
+            </div>
+        </article>
+
+        <div class="education-image-grid education-logo-grid reveal" aria-label="School logo">
+            <div class="image-placeholder education-logo-slot">
+                {% if education_item.logo %}
+                <img src="{{ education_item.logo }}" alt="{{ education_item.logo_label }}">
+                {% else %}
+                <span>Image 1</span>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

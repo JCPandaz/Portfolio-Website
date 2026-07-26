@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+
+{% block title %}{{ project.title }} | {{ profile.name }}{% endblock %}
+
+{% block content %}
+<section class="page-hero project-detail-hero">
+    <div class="container project-detail-grid">
+        <div class="page-copy reveal">
+            <a href="{{ url_for('projects') }}" class="back-link">Back to projects</a>
+            <div class="project-title-block">
+                <p class="eyebrow">{{ project.category }}</p>
+                <h1>{{ project.title }}</h1>
+                <p>{{ project.summary }}</p>
+                <div class="tag-row">
+                    {% for tag in project.tags %}
+                    <span>{{ tag }}</span>
+                    {% endfor %}
+                </div>
+                {% if project.external_url %}
+                <a href="{{ project.external_url }}" target="_blank" rel="noopener" class="btn">Open Repository</a>
+                {% endif %}
+            </div>
+        </div>
+        <div class="project-media reveal">
+            {% if project.image %}
+            <img src="{{ project.image }}" alt="{{ project.title }}">
+            {% else %}
+            <div class="project-visual large">
+                <span>{{ project.category }}</span>
+                <strong>{{ project.title }}</strong>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</section>
+
+<section class="content-section">
+    <div class="container detail-card project-highlights-card reveal">
+        <div>
+            <span class="project-highlight-title">Highlights</span>
+        </div>
+        <ul>
+            {% for bullet in project.bullets %}
+            <li>{{ bullet }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+</section>
+
+<section class="content-section">
+    <div class="container">
+        <div class="section-heading reveal">
+            <p class="section-kicker">More</p>
+            <h2 class="sub-title">Other Projects</h2>
+        </div>
+        <div class="mini-project-grid">
+            {% for item in projects if item.slug != project.slug %}
+            <a href="{{ url_for('project_detail', slug=item.slug) }}" class="mini-project reveal">
+                <span>{{ item.category }}</span>
+                <strong>{{ item.title }}</strong>
+            </a>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}

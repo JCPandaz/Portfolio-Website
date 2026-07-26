@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %}Experience | {{ profile.name }}{% endblock %}
+
+{% block content %}
+<section class="page-hero compact-hero">
+    <div class="container page-copy reveal">
+        <h1>Experience</h1>
+    </div>
+</section>
+
+<section class="content-section">
+    <div class="container experience-list">
+        {% for item in experiences %}
+        <a class="experience-card reveal" href="{{ url_for('experience_detail', slug=item.slug) }}">
+            <div class="experience-logo">
+                {% if item.logo %}
+                <img src="{{ item.logo }}" alt="{{ item.logo_label }}">
+                {% else %}
+                <span>{{ item.logo_label }}</span>
+                {% endif %}
+            </div>
+            <div class="experience-main">
+                <span>{{ item.date }}</span>
+                <h2>{{ item.title }}</h2>
+                <p>{{ item.organization }} | {{ item.employment }}</p>
+            </div>
+            <div class="experience-meta">
+                <span class="location-label">{{ item.location }}</span>
+            </div>
+        </a>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}

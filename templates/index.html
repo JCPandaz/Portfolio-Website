@@ -1,440 +1,48 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="/static/Images/JC.png" type="image/png">
-    <title>Joseph Casino's Portfolio</title>
-    <link rel="stylesheet" href="/static/style.css">
-</head>
-<body>
+{% extends "base.html" %}
 
-    <div id="header">
-        <div class="nav-container">
-            <nav>
-                <a href="#home">
-                    <img src="/static/Images/JC.png" class="logo">
-                </a>
-                <ul id="phonemenu">
-                    <div id="close"class="click">
-                        <img src="/static/Images/JC.png" onclick="closemenu()">
-                    </div>
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#portfolio">Portfolio</a></li>
-                    <li><a href="#socials">Socials</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-                <div id="open" class="click">
-                    <img src="/static/Images/JC.png"  onclick="openmenu()">
-                </div>
-            </nav>
-        </div>
-    </div>
-    
-
-<div id="home">
-    <div class="container">
-        <div class="header-text">
-            <p>Computer Engineer</p>
+{% block content %}
+<section id="home" class="hero">
+    <div class="container hero-content">
+        <div class="header-text reveal">
+            <p class="eyebrow">Computer Engineer</p>
             <h1><span>Joseph</span> <span class="blue">Casino</span></h1>
-        </div>
-    </div>
-</div>
-    
-<!-----------------------about------------------->
-<div id="about">
-    <div class="container">
-        <div class="row">
-            <div class="about-col-1">
-                <img src="\static\Images\Joseph_Casino_Headshot.jpg">
-            </div>
-            <div class="about-col-2">
-                <h1 class="sub-title">About Me</h1>
-                <p>I am an organized, adaptable leader with a strong passion for hardware development, automation and robotics and product innovation. My journey into computer engineering began with a fascination for PC peripherals and content creation, sparking a deep interest in how technology shapes our everyday lives.</p><br>
-<p>I thrive on challenging experiences and opportunities to collaborate with diverse communities, continually expanding my skills and perspectives. With a focus on innovation, problem-solving, and project development, I aim to grow both personally and professionally through impactful full-time opportunities and leadership roles, with the overarching goal to contribute to cutting-edge advancements in the technology industry. </p>
-
-                <div class="tab-titles">
-                    <p class="tab-links active-link" onclick="opentab('skills')">Skills</p>
-                    <p class="tab-links" onclick="opentab('experience')">Experience</p>
-                    <p class="tab-links" onclick="opentab('education')">Education</p>
-                </div>
-                <div class="tab-contents active-tab" id="skills">
-                    <ul>
-                        <li><span>Hardware</span><br>PCB Design, Ki-Cad, FPGAs, Xilinix Vivado and Vitis, Quartus, PWM, AXI, SPI, I2C, UART, LiDAR</li>
-                        <li><span>Software</span><br>Verilog, SystemVerilog, C, C++, Assembly (RISC-V), Python, HTML/CSS, JavaScript, Git, GDB, VS Code, cPanel</li>
-                        <li><span>Administrative</span><br>Microsoft Office Suites, Slack, Northstar Club Management, Data Analytics, Marketing, Accounting, Organizational and Behavioral Management</li>
-                        <li><span>Creative</span><br>Canva, Adobe Illustrator, Wondershare Filmora, Graphic Design, Film and Video Editing, Social Media Algorithms and Optimization</li>
-                        <li><span>Languages</span><br>Fluent in English, basic comprehension of Spanish and Tagalog</li>
-                        <li><span>Interests/Hobbies</span><br>Basketball, Dodgeball, Gaming, Guitar, Ice Skating, Legos, Singing, Theatre, Trading Card Collecting</li>
-                    </ul>
-                </div>
-                <div class="tab-contents" id="experience">
-                    <ul>
-                        <li><span>August 2024 - December 2025</span><br>UIUC ECE Engineering Learning Assistant</li>
-                        <li><span>June 2025 - August 2025</span><br>Software Developer Automation Intern at LeanMail / ScaleYOU</li>
-                        <li><span>August 2023 - May 2024</span><br>UIUC Engineering Council Publicity Committee</li>
-                        <li><span>May 2024 - July 2024</span><br>Engineering Intern for the United States Postal Service, located in Merrifield, Virginia</li>
-                        <li><span>May 2023 - September 2023</span><br>Website Maintenance and Graphic Designer for Indian Hill Club, located in Winnetka, Illinois</li>
-                    </ul>
-                </div>
-                <div class="tab-contents" id="education">
-                    <ul>
-                        <li><span>College</span><br>University of Illinois at Urbana-Champaign, Class of 2026 <br>B.S. Computer Engineering <br> Minor in Business<br><br></li>
-                        <li><span>Relevant Courses</span>
-                            <br>Sensors and Instrumentation
-                            <br>Robotics
-                            <br>Principles of Safe Autonomy
-                            <br>Digital Systems Laboratory
-                            <br>Computer Systems Programming
-                            <br>Algorithms and Models of Computation
-                            <br>Power Circuits and Electromechanics
-                            <br>Data Structures
-                            <br>Analog Signal Processing
-                            <br>Discrete Structures
-                            <br>Electronic Circuits
-                            <br>
-                            <br>University Physics: Mechanics, Electricity & Magnetism, Thermal, and Quantum
-                            <br>Mathematics: Calculus I/II/III, Linear Algebra, Differential Equations
-                            <br>Business: Information Technology, Data Analytics, Accounting, Marketing, Organizational and Behavioral Management<br><br>
-                        </li>
-                        <li><span>High School</span><br>Grant Community High School, Class of 2022
-                            <br>SAT: 1440
-                        </li>
-                    </ul>
-                </div>
+            <div class="hero-actions" aria-label="Primary links">
+                <a href="{{ url_for('projects') }}" class="btn">Projects</a>
+                <a href="{{ url_for('about') }}" class="btn">About</a>
+                <a href="{{ profile.resume }}" download class="btn btn2">Resume</a>
             </div>
         </div>
     </div>
-</div>
+    <a href="#featured" class="scroll-cue" aria-label="Scroll to featured projects">
+        <span></span>
+    </a>
+</section>
 
-<div id="portfolio">
+<section id="featured" class="featured-section">
     <div class="container">
-        <h1 class="sub-title">Projects</h1>
+        <div class="section-heading reveal">
+            <h2 class="sub-title">Featured Projects</h2>
+        </div>
         <div class="work-list">
-            <div class="work">
-                <img src="/static/Images/MTDTracker.png" alt="MTD PCB Tracker">
-                <div class="layer">
-                    <h3>MTD Bus LED Tracker</h3>
-                    <p>A STM32-based embedded system that visualizes real-time UIUC bus locations using live MTD API data, Wi-Fi networking, and an addressable LED display. Repository is currently private.</p>
+            {% for project in projects %}
+            <a href="{{ url_for('project_detail', slug=project.slug) }}" class="work reveal">
+                {% if project.image %}
+                <img src="{{ project.image }}" alt="{{ project.title }}">
+                {% else %}
+                <div class="project-visual">
+                    <span>{{ project.category }}</span>
+                    <strong>{{ project.title }}</strong>
                 </div>
-            </div>
-            <div class="work">
-                <img src="/static/Images/Camera.png" alt="Real-Time Object Tracking Camera">
+                {% endif %}
                 <div class="layer">
-                    <h3>Real-Time Object Tracking Camera</h3>
-                    <p>A real-time FPGA-based vision system that performs object tracking through frame differencing and centroid extraction while driving closed-loop motor control for smooth pan-tracking. Repository is currently private.</p>
-                </div>
-            </div>
-            <div class="work">
-                <img src="/static/Images/Barcelona.png" alt="Python Automation Scripts">
-                <div class="layer">
-                    <h3>Python CRM Automation Scripts</h3>
-                    <p>Developed and deployed Python and CRM-based automations for LeanMail / ScaleYOU, a company located in Barcelona, Spain</p>
-                </div>
-            </div>
-            <a href="https://youtu.be/QC9wWY_WLH8" target="_blank" class="work-link">
-                <div class="work">
-                    <img src="/static/Images/484.png" alt="Autonomous LiDAR Mapping Car">
-                    <div class="layer">
-                        <h3>Autonomous LiDAR Mapping Car</h3>
-                        <p>An autonomous RC vehicle that uses LiDAR-based SLAM to construct a real-time 2D occupancy map and navigate toward unexplored regions. Repository is currently private.</p>
-                    </div>
+                    <span class="card-kicker">{{ project.category }}</span>
+                    <h3>{{ project.title }}</h3>
+                    <p>{{ project.summary }}</p>
                 </div>
             </a>
-            <div class="work">
-                <img src="/static/Images/391.png" alt="RISC-V Operating System">
-                <div class="layer">
-                    <h3>RISC-V Operating System</h3>
-                    <p>A custom operating system for the RISC-V architecture implementing virtual memory, process isolation, system calls, and user-space program execution. Repository is currently private.</p>
-                </div>
-            </div>
-            <div class="work">
-                <img src="/static/Images/ATAT.png" alt="AT-AT Walker">
-                <div class="layer">
-                    <h3>AT-AT Walker</h3>
-                    <p>A custom robotic AT-AT walker built on an STM32 microcontroller that uses PWM-driven servo control and locomotion algorithms to achieve stable walking. Repository is currently private.</p>
-                </div>
-            </div>
-            <div class="work">
-                <img src="/static/Images/USPS.png" alt="USPS AFCS-200">
-                <div class="layer">
-                    <h3>USPS AFCS-200 Improvements</h3>
-                    <p>Performed image performance analysis on mail sortation systems and proposed data-driven calibration improvements projected to save over 1,600 labor hours annually.</p>
-                </div>
-            </div>
-            <div class="work">
-                <img src="/static/Images/Tetris.png" alt="SystemVerilog Tetris">
-                <div class="layer">
-                    <h3>SystemVerilog Tetris</h3>
-                    <p>A functioning replica of the videogame Tetris, written in SystemVerilog, programmed onto an AMD FPGA. Repository is currently private.</p>
-                </div>
-            </div>
-            <a href="https://github.com/JCPandaz/Python-Pokedex" target="_blank" class="work-link">
-                <div class="work">
-                    <img src="/static/Images/PyPokedex.png" alt="Python Pokedex">
-                    <div class="layer">
-                        <h3>Python Pokedex</h3>
-                        <p>A tkinter-based python application using a Pokemon API where the user can search and display over 1000 different Pokemon character's information. Repository is a constant work in progress and can be found on my Github.</p>
-                    </div>
-                </div>
-            </a>
-            <a href="https://www.instagram.com/ec_illinois/reels/" target="_blank" class="work-link">
-                <div class="work">
-                    <img src="/static/Images/EC_Talk_Show.png" alt="EC Talk Show">
-                    <div class="layer">
-                        <h3>EC Talk Show</h3>
-                        <p>Created and produced recurring podcast-like clips featured on Instagram Reels, highlighting the UIUC Engineering Council and student life in the Grainger College of Engineering.</p>
-                        <span>Check out @ec_illinois!</span>
-                    </div>
-                </div>
-            </a>
-            <a href="https://github.com/JCPandaz/Portfolio-Website" target="_blank" class="work-link">
-                <div class="work">
-                    <img src="/static/Images/JC_Work.png" alt="Personal Website">
-                    <div class="layer">
-                        <h3>Personal Website</h3>
-                        <p>This website you are currently viewing has been coded from scratch using HTML, CSS, JavaScript, and some Python. Logo is custom-made using Canva. Repository can be found on my Github.</p>
-                    </div>
-                </div>
-            </a>
+            {% endfor %}
         </div>
     </div>
-</div>
+</section>
 
-
-
-<!--------------------socials------------------->
-
-<div id="socials">
-    <div class="container">
-        <h1 class="sub-title">Socials</h1>
-        <div class="socials-list">
-            <a href="https://www.instagram.com/thejosephcasino" target="_blank" class="social-box">
-                <img src="/static/Social_Icons/1.png">
-                <div class="layer2">
-                    <h2>Instagram</h2>
-                    <p>For Personal Relations</p>
-                    <span>@thejosephcasino</span>
-                </div>
-            </a>
-            <a href="https://www.linkedin.com/in/joseph-casino/" target="_blank" class="social-box">
-                <img src="/static/Social_Icons/2.png">
-                <div class="layer2">
-                    <h2>LinkedIn</h2>
-                    <p>For Professional Relations</p>
-                    <span>linkedin.com/in/joseph-casino/</span>
-                </div>
-            </a>
-            <a href="https://discordapp.com/users/345012970402873345" target="_blank" class="social-box">
-                <img src="/static/Social_Icons/3.png">
-                <div class="layer2">
-                    <h2>Discord</h2>
-                    <p>For Gaming Relations</p>
-                    <span>@jcandaz</span>
-                </div>
-            </a>
-            <a href="https://open.spotify.com/user/kwomt9ag8v0vnrzxzz1wbfc9v" target="_blank" class="social-box">
-                <img src="/static/Social_Icons/4.png">
-                <div class="layer2">
-                    <h2>Spotify</h2>
-                    <p>My life and music taste, curated into seasonal playlists</p>
-                    <span>Joseph Casino</span>
-                </div>
-            </a>
-            <a href="https://github.com/JCPandaz" target="_blank" class="social-box">
-                <img src="/static/Social_Icons/5.png">
-                <div class="layer2">
-                    <h2>Github</h2>
-                    <p>Source Code for my Projects</p>
-                    <span>github.com/JCPandaz</span>
-                </div>
-            </a>
-            <a href="https://www.youtube.com/JCPandaz" target="_blank" class="social-box">
-                <img src="/static/Social_Icons/6.png">
-                <div class="layer2">
-                    <h2>Youtube</h2>
-                    <p>Gaming, Tech Reviews, and Unboxing Videos</p>
-                    <span>@JCPandaz</span>
-                </div>
-            </a>
-            <a href="https://www.tiktok.com/@jcpandaz" target="_blank" class="social-box">
-                <img src="/static/Social_Icons/7.png">
-                <div class="layer2">
-                    <h2>Tik Tok</h2>
-                    <p>Gaming Short-form Content</p>
-                    <span>@JCPandaz</span>
-                </div>
-            </a>
-            <a href="https://x.com/thejosephcasino" target="_blank" class="social-box">
-                <img src="/static/Social_Icons/8.png">
-                <div class="layer2">
-                    <h2>X / Twitter</h2>
-                    <p>Says I'm located in Radiator Springs...</p>
-                    <span>@thejosephcasino</span>
-                </div>
-            </a>
-            <a href="https://www.facebook.com/profile.php?id=100011346090489" target="_blank" class="social-box">
-                <img src="/static/Social_Icons/9.png">
-                <div class="layer2">
-                    <h2>Facebook</h2>
-                    <p>Their algorithm doesn't believe my last name is Casino!</p>
-                    <span>Joseph Michael-Casino</span>
-                </div>
-            </a>
-            <!-- <div class="social-box">
-                <img src="/static/Social_Icons/10.png">
-                <div class="layer2">
-                    <h2>Pokemon Go</h2>
-                    <p>Day 1 Player, Level 41, 816 Caught in Pokedex </p>
-                    <span>Trainer Code: 1251 8088 6965</span>
-                </div> -->
-            </div>
-        </div>
-    </div>
-</div>
-
-
-<!----------contact------>
-<div id="contact">
-    <div class="container">
-        <div class="row">
-            <div class="contact-left">
-                <h1 class="sub-title">Contact Me</h1>
-                <p>josephcasino88@gmail.com</p>
-                <p>773-844-1041</p>
-                <div class="social-icons">
-                </div>
-                <a href="/static/Joseph_Casino_Resume_2026.pdf" download class="btn btn2">Download Joseph Casino's Resume</a>
-            </div>
-            <div class="contact-right">                
-                <form name="submit-to-google-sheet">
-                    <input type="text" name="Name" placeholder="Your Name" required>
-                    <input type="email" name="Email" placeholder="Your Email" required>
-                    <textarea name="Message" rows="6" placeholder="Your Message"></textarea>
-                    <button type="submit" class="btn btn2">Submit</button>
-                </form>
-                <span id="msg"></span>
-            </div>
-        </div>
-    </div>   
-    <div class="copyright">
-        <p>&copy; 2026 - Joseph Casino. Kachow!</p>
-    </div>
-</div>
-
-
-
-
-
-
-<script>
-    document.querySelectorAll('nav ul li a').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            e.preventDefault();
-
-            const targetId = this.getAttribute('href').substring(1);
-            const targetElement = document.getElementById(targetId);
-            const headerOffset = document.querySelector('nav').offsetHeight;
-            const elementPosition = targetElement.getBoundingClientRect().top;
-            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-
-            window.scrollTo({
-                top: offsetPosition,
-                behavior: 'smooth'
-            });
-        });
-    });
-</script>
-
-
-<script>
-
-    var tablinks = document.getElementsByClassName("tab-links");
-    var tabcontents = document.getElementsByClassName("tab-contents");
-    
-    function opentab(tabname){
-        for(tablink of tablinks){
-            tablink.classList.remove("active-link");
-        }
-        for(tabcontent of tabcontents){
-            tabcontent.classList.remove("active-tab");
-        }
-        event.currentTarget.classList.add("active-link");
-        document.getElementById(tabname).classList.add("active-tab");
-    }
-
-</script>
-
-
-<script>
-    var phonemenu = document.getElementById("phonemenu");
-    var openclick = document.getElementById("open");
-    var closeclick = document.getElementById("close");
-
-    function openmenu() {
-        phonemenu.style.display = "block";
-        openclick.style.display = "none";
-        closeclick.style.display = "block";
-    }
-
-    function closemenu() {
-        phonemenu.style.display = "none";
-        openclick.style.display = "block";
-        closeclick.style.display = "none";
-    }
-
-    window.addEventListener('resize', function () {
-        if (window.innerWidth > 800) {
-            phonemenu.style.display = "block";
-            openclick.style.display = "none";
-            closeclick.style.display = "none";
-        } else {
-            phonemenu.style.display = "none";
-            openclick.style.display = "block";
-            closeclick.style.display = "none";
-        }
-    })
-
-</script>
-
-
-
-<script>
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbwSoSsLYrVtpNyfQXjS7D5I4TIleF0uIjz1uC3u7a1HLdRMJP9hs7-D_TWmDptOIsvRrA/exec'
-    const form = document.forms['submit-to-google-sheet']
-    const msg = document.getElementById("msg")
-  
-    form.addEventListener('submit', e => {
-      e.preventDefault()
-      fetch(scriptURL, { method: 'POST', body: new FormData(form)})
-        .then(response => {
-            msg.innerHTML = "Message sent!"
-            setTimeout(function(){
-                msg.innerHTML = ""
-            }, 5000)
-            form.reset()
-        })
-        .catch(error => console.error('Error!', error.message))
-    })
-  </script>
-<script>
-    function disableSpecificLinkForSmallScreens() {
-        const specificLink = document.querySelector('.disable-on-small-screens');
-        if (window.innerWidth <= 800) {
-            specificLink.removeAttribute('href');
-        } else {
-            specificLink.setAttribute('href', 'https://www.instagram.com/ec_illinois/reels/');
-        }
-    }
-
-    // Run the function on page load
-    disableSpecificLinkForSmallScreens();
-
-    // Run the function on window resize
-    window.addEventListener('resize', disableSpecificLinkForSmallScreens);
-</script>
-
-</body>
-</html>
+{% endblock %}

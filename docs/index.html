@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Joseph Casino is a Safety Service Engineer with experience in embedded systems, hardware, software, automation, and machine safety.">
+    <link rel="icon" href="/static/Images/JC.png" type="image/png">
+    <link rel="preload" href="/static/Images/Website_Header.png" as="image">
+    <title>Joseph Casino | Safety Service Engineer</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body class="">
+    <header id="header" class="site-header">
+        <div class="nav-container">
+            <nav aria-label="Primary navigation">
+                <a href="/" class="brand" aria-label="Joseph Casino home">
+                    <img src="/static/Images/JC.png" class="logo" alt="JC monogram">
+                </a>
+                <button class="menu-toggle" type="button" aria-label="Open navigation" aria-controls="phonemenu" aria-expanded="false">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <ul id="phonemenu" class="nav-links">
+                    
+                    <li><a href="/" class="is-active">Home</a></li>
+                    
+                    <li><a href="/about" class="">About</a></li>
+                    
+                    <li><a href="/experience" class="">Experience</a></li>
+                    
+                    <li><a href="/education" class="">Education</a></li>
+                    
+                    <li><a href="/projects" class="">Projects</a></li>
+                    
+                    <li><a href="/socials" class="">Socials</a></li>
+                    
+                    <li><a href="/contact" class="">Contact</a></li>
+                    
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        
+<section id="home" class="hero">
+    <div class="container hero-content">
+        <div class="header-text reveal">
+            <p class="eyebrow">Computer Engineer</p>
+            <h1><span>Joseph</span> <span class="blue">Casino</span></h1>
+            <div class="hero-actions" aria-label="Primary links">
+                <a href="/projects" class="btn">Projects</a>
+                <a href="/about" class="btn">About</a>
+                <a href="/static/JosephCasino_Resume_2026.pdf" download class="btn btn2">Resume</a>
+            </div>
+        </div>
+    </div>
+    <a href="#featured" class="scroll-cue" aria-label="Scroll to featured projects">
+        <span></span>
+    </a>
+</section>
+
+<section id="featured" class="featured-section">
+    <div class="container">
+        <div class="section-heading reveal">
+            <h2 class="sub-title">Featured Projects</h2>
+        </div>
+        <div class="work-list">
+            
+            <a href="/projects/impact-insoles" class="work reveal">
+                
+                <img src="/static/Images/ImpactInsoles.jpg" alt="Impact Insoles">
+                
+                <div class="layer">
+                    <span class="card-kicker">Senior Design</span>
+                    <h3>Impact Insoles</h3>
+                    <p>Pressure-sensing insoles for runners using force sensing resistors, custom circuitry, Bluetooth communication, and web-based data visualization.</p>
+                </div>
+            </a>
+            
+            <a href="/projects/atat-walker" class="work reveal">
+                
+                <img src="/static/Images/ATAT.png" alt="AT-AT Walker">
+                
+                <div class="layer">
+                    <span class="card-kicker">Embedded Systems and Robotics</span>
+                    <h3>AT-AT Walker</h3>
+                    <p>A custom robotic walker built around STM32 control, PWM-driven servos, Bluetooth communication, custom PCB design, and gait sequencing.</p>
+                </div>
+            </a>
+            
+            <a href="/projects/risc-v-operating-system" class="work reveal">
+                
+                <img src="/static/Images/391.png" alt="RISC-V Operating System">
+                
+                <div class="layer">
+                    <span class="card-kicker">Systems Software</span>
+                    <h3>RISC-V Operating System</h3>
+                    <p>A low-level operating systems project involving paging, memory management, process control, device interfaces, and file systems.</p>
+                </div>
+            </a>
+            
+        </div>
+    </div>
+</section>
+
+
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <p>&copy; 2026 - Joseph Casino. Kachow!</p>
+        </div>
+    </footer>
+
+    <script>
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navLinks = document.getElementById('phonemenu');
+
+        function setMenu(open) {
+            navLinks.classList.toggle('is-open', open);
+            menuToggle.classList.toggle('is-open', open);
+            menuToggle.setAttribute('aria-expanded', String(open));
+            menuToggle.setAttribute('aria-label', open ? 'Close navigation' : 'Open navigation');
+        }
+
+        menuToggle.addEventListener('click', () => {
+            setMenu(!navLinks.classList.contains('is-open'));
+        });
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', event => {
+                const target = document.querySelector(anchor.getAttribute('href'));
+
+                if (!target) {
+                    return;
+                }
+
+                event.preventDefault();
+                window.scrollTo({
+                    top: target.getBoundingClientRect().top + window.scrollY - 96,
+                    behavior: 'smooth'
+                });
+                setMenu(false);
+            });
+        });
+
+        const revealItems = document.querySelectorAll('.reveal');
+
+        if ('IntersectionObserver' in window) {
+            const revealObserver = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        revealObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.14 });
+
+            revealItems.forEach(item => revealObserver.observe(item));
+        } else {
+            revealItems.forEach(item => item.classList.add('is-visible'));
+        }
+
+        const form = document.forms['submit-to-google-sheet'];
+        const msg = document.getElementById('msg');
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbwSoSsLYrVtpNyfQXjS7D5I4TIleF0uIjz1uC3u7a1HLdRMJP9hs7-D_TWmDptOIsvRrA/exec';
+
+        if (form && msg) {
+            form.addEventListener('submit', event => {
+                event.preventDefault();
+                msg.textContent = 'Sending...';
+
+                fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+                    .then(() => {
+                        msg.textContent = 'Message sent!';
+                        setTimeout(() => {
+                            msg.textContent = '';
+                        }, 5000);
+                        form.reset();
+                    })
+                    .catch(error => {
+                        msg.textContent = 'Message could not be sent. Please email me directly.';
+                        console.error('Error!', error.message);
+                    });
+            });
+        }
+    </script>
+</body>
+</html>

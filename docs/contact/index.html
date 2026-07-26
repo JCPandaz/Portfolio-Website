@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Joseph Casino is a Safety Service Engineer with experience in embedded systems, hardware, software, automation, and machine safety.">
+    <link rel="icon" href="/static/Images/JC.png" type="image/png">
+    <link rel="preload" href="/static/Images/Website_Header.png" as="image">
+    <title>Contact | Joseph Casino</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body class="">
+    <header id="header" class="site-header">
+        <div class="nav-container">
+            <nav aria-label="Primary navigation">
+                <a href="/" class="brand" aria-label="Joseph Casino home">
+                    <img src="/static/Images/JC.png" class="logo" alt="JC monogram">
+                </a>
+                <button class="menu-toggle" type="button" aria-label="Open navigation" aria-controls="phonemenu" aria-expanded="false">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <ul id="phonemenu" class="nav-links">
+                    
+                    <li><a href="/" class="">Home</a></li>
+                    
+                    <li><a href="/about" class="">About</a></li>
+                    
+                    <li><a href="/experience" class="">Experience</a></li>
+                    
+                    <li><a href="/education" class="">Education</a></li>
+                    
+                    <li><a href="/projects" class="">Projects</a></li>
+                    
+                    <li><a href="/socials" class="">Socials</a></li>
+                    
+                    <li><a href="/contact" class="is-active">Contact</a></li>
+                    
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        
+<section class="page-hero compact-hero">
+    <div class="container page-copy reveal">
+        <h1>Let's Connect!</h1>
+    </div>
+</section>
+
+<section class="content-section">
+    <div class="container contact-layout">
+        <div class="contact-left reveal">
+            <div class="contact-links">
+                <a href="mailto:josephcasino88@gmail.com">
+                    <span>Email</span>
+                    josephcasino88@gmail.com
+                </a>
+                <a href="tel:+17738441041">
+                    <span>Phone</span>
+                    773-844-1041
+                </a>
+            </div>
+            <a href="/static/JosephCasino_Resume_2026.pdf" download class="btn btn2">Download Resume</a>
+        </div>
+
+        <div class="contact-right reveal">
+            <form name="submit-to-google-sheet">
+                <label class="sr-only" for="name">Your Name</label>
+                <input id="name" type="text" name="Name" placeholder="Your Name" autocomplete="name" required>
+
+                <label class="sr-only" for="email">Your Email</label>
+                <input id="email" type="email" name="Email" placeholder="Your Email" autocomplete="email" required>
+
+                <label class="sr-only" for="message">Your Message</label>
+                <textarea id="message" name="Message" rows="6" placeholder="Your Message"></textarea>
+
+                <button type="submit" class="btn btn2">Submit</button>
+                <span id="msg" role="status" aria-live="polite"></span>
+            </form>
+        </div>
+    </div>
+</section>
+
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <p>&copy; 2026 - Joseph Casino. Kachow!</p>
+        </div>
+    </footer>
+
+    <script>
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navLinks = document.getElementById('phonemenu');
+
+        function setMenu(open) {
+            navLinks.classList.toggle('is-open', open);
+            menuToggle.classList.toggle('is-open', open);
+            menuToggle.setAttribute('aria-expanded', String(open));
+            menuToggle.setAttribute('aria-label', open ? 'Close navigation' : 'Open navigation');
+        }
+
+        menuToggle.addEventListener('click', () => {
+            setMenu(!navLinks.classList.contains('is-open'));
+        });
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', event => {
+                const target = document.querySelector(anchor.getAttribute('href'));
+
+                if (!target) {
+                    return;
+                }
+
+                event.preventDefault();
+                window.scrollTo({
+                    top: target.getBoundingClientRect().top + window.scrollY - 96,
+                    behavior: 'smooth'
+                });
+                setMenu(false);
+            });
+        });
+
+        const revealItems = document.querySelectorAll('.reveal');
+
+        if ('IntersectionObserver' in window) {
+            const revealObserver = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        revealObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.14 });
+
+            revealItems.forEach(item => revealObserver.observe(item));
+        } else {
+            revealItems.forEach(item => item.classList.add('is-visible'));
+        }
+
+        const form = document.forms['submit-to-google-sheet'];
+        const msg = document.getElementById('msg');
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbwSoSsLYrVtpNyfQXjS7D5I4TIleF0uIjz1uC3u7a1HLdRMJP9hs7-D_TWmDptOIsvRrA/exec';
+
+        if (form && msg) {
+            form.addEventListener('submit', event => {
+                event.preventDefault();
+                msg.textContent = 'Sending...';
+
+                fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+                    .then(() => {
+                        msg.textContent = 'Message sent!';
+                        setTimeout(() => {
+                            msg.textContent = '';
+                        }, 5000);
+                        form.reset();
+                    })
+                    .catch(error => {
+                        msg.textContent = 'Message could not be sent. Please email me directly.';
+                        console.error('Error!', error.message);
+                    });
+            });
+        }
+    </script>
+</body>
+</html>

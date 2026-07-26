@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %}Education | {{ profile.name }}{% endblock %}
+
+{% block content %}
+<section class="page-hero compact-hero">
+    <div class="container page-copy reveal">
+        <h1>Education</h1>
+    </div>
+</section>
+
+<section class="content-section">
+    <div class="container education-list">
+        {% for item in education %}
+        {% if item.detail_page %}
+        <a class="education-card education-button reveal" href="{{ url_for('education_detail', slug=item.slug) }}">
+        {% else %}
+        <article class="education-card education-button reveal">
+        {% endif %}
+            <div class="education-logo">
+                {% if item.logo %}
+                <img src="{{ item.logo }}" alt="{{ item.logo_label }}">
+                {% else %}
+                <span>{{ item.logo_label }}</span>
+                {% endif %}
+            </div>
+        {% if item.detail_page %}
+        </a>
+        {% else %}
+        </article>
+        {% endif %}
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}

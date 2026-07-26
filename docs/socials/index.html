@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Joseph Casino is a Safety Service Engineer with experience in embedded systems, hardware, software, automation, and machine safety.">
+    <link rel="icon" href="/static/Images/JC.png" type="image/png">
+    <link rel="preload" href="/static/Images/Website_Header.png" as="image">
+    <title>Socials | Joseph Casino</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body class="">
+    <header id="header" class="site-header">
+        <div class="nav-container">
+            <nav aria-label="Primary navigation">
+                <a href="/" class="brand" aria-label="Joseph Casino home">
+                    <img src="/static/Images/JC.png" class="logo" alt="JC monogram">
+                </a>
+                <button class="menu-toggle" type="button" aria-label="Open navigation" aria-controls="phonemenu" aria-expanded="false">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <ul id="phonemenu" class="nav-links">
+                    
+                    <li><a href="/" class="">Home</a></li>
+                    
+                    <li><a href="/about" class="">About</a></li>
+                    
+                    <li><a href="/experience" class="">Experience</a></li>
+                    
+                    <li><a href="/education" class="">Education</a></li>
+                    
+                    <li><a href="/projects" class="">Projects</a></li>
+                    
+                    <li><a href="/socials" class="is-active">Socials</a></li>
+                    
+                    <li><a href="/contact" class="">Contact</a></li>
+                    
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        
+<section class="page-hero compact-hero">
+    <div class="container page-copy reveal">
+        <h1>Socials</h1>
+    </div>
+</section>
+
+<section class="content-section">
+    <div class="container socials-list social-page-grid">
+        
+        <a href="https://www.instagram.com/thejosephcasino" target="_blank" rel="noopener" class="social-box reveal">
+            <img src="/static/Social_Icons/1.png" alt="Instagram">
+            <span class="social-name">Instagram</span>
+            <span class="social-handle">@thejosephcasino</span>
+        </a>
+        
+        <a href="https://www.linkedin.com/in/joseph-casino/" target="_blank" rel="noopener" class="social-box reveal">
+            <img src="/static/Social_Icons/2.png" alt="LinkedIn">
+            <span class="social-name">LinkedIn</span>
+            <span class="social-handle">joseph-casino</span>
+        </a>
+        
+        <a href="https://discordapp.com/users/345012970402873345" target="_blank" rel="noopener" class="social-box reveal">
+            <img src="/static/Social_Icons/3.png" alt="Discord">
+            <span class="social-name">Discord</span>
+            <span class="social-handle">@jcpandaz</span>
+        </a>
+        
+        <a href="https://open.spotify.com/user/kwomt9ag8v0vnrzxzz1wbfc9v" target="_blank" rel="noopener" class="social-box reveal">
+            <img src="/static/Social_Icons/4.png" alt="Spotify">
+            <span class="social-name">Spotify</span>
+            <span class="social-handle">Joseph Casino</span>
+        </a>
+        
+        <a href="https://github.com/JCPandaz" target="_blank" rel="noopener" class="social-box reveal">
+            <img src="/static/Social_Icons/5.png" alt="GitHub">
+            <span class="social-name">GitHub</span>
+            <span class="social-handle">@JCPandaz</span>
+        </a>
+        
+        <a href="https://www.youtube.com/JCPandaz" target="_blank" rel="noopener" class="social-box reveal">
+            <img src="/static/Social_Icons/6.png" alt="YouTube">
+            <span class="social-name">YouTube</span>
+            <span class="social-handle">@JCPandaz</span>
+        </a>
+        
+        <a href="https://www.tiktok.com/@jcpandaz" target="_blank" rel="noopener" class="social-box reveal">
+            <img src="/static/Social_Icons/7.png" alt="TikTok">
+            <span class="social-name">TikTok</span>
+            <span class="social-handle">@jcpandaz</span>
+        </a>
+        
+        <a href="https://x.com/thejosephcasino" target="_blank" rel="noopener" class="social-box reveal">
+            <img src="/static/Social_Icons/8.png" alt="X">
+            <span class="social-name">X</span>
+            <span class="social-handle">@thejosephcasino</span>
+        </a>
+        
+        <a href="https://www.facebook.com/profile.php?id=100011346090489" target="_blank" rel="noopener" class="social-box reveal">
+            <img src="/static/Social_Icons/9.png" alt="Facebook">
+            <span class="social-name">Facebook</span>
+            <span class="social-handle">Joseph Michael-Casino</span>
+        </a>
+        
+    </div>
+</section>
+
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <p>&copy; 2026 - Joseph Casino. Kachow!</p>
+        </div>
+    </footer>
+
+    <script>
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navLinks = document.getElementById('phonemenu');
+
+        function setMenu(open) {
+            navLinks.classList.toggle('is-open', open);
+            menuToggle.classList.toggle('is-open', open);
+            menuToggle.setAttribute('aria-expanded', String(open));
+            menuToggle.setAttribute('aria-label', open ? 'Close navigation' : 'Open navigation');
+        }
+
+        menuToggle.addEventListener('click', () => {
+            setMenu(!navLinks.classList.contains('is-open'));
+        });
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', event => {
+                const target = document.querySelector(anchor.getAttribute('href'));
+
+                if (!target) {
+                    return;
+                }
+
+                event.preventDefault();
+                window.scrollTo({
+                    top: target.getBoundingClientRect().top + window.scrollY - 96,
+                    behavior: 'smooth'
+                });
+                setMenu(false);
+            });
+        });
+
+        const revealItems = document.querySelectorAll('.reveal');
+
+        if ('IntersectionObserver' in window) {
+            const revealObserver = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        revealObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.14 });
+
+            revealItems.forEach(item => revealObserver.observe(item));
+        } else {
+            revealItems.forEach(item => item.classList.add('is-visible'));
+        }
+
+        const form = document.forms['submit-to-google-sheet'];
+        const msg = document.getElementById('msg');
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbwSoSsLYrVtpNyfQXjS7D5I4TIleF0uIjz1uC3u7a1HLdRMJP9hs7-D_TWmDptOIsvRrA/exec';
+
+        if (form && msg) {
+            form.addEventListener('submit', event => {
+                event.preventDefault();
+                msg.textContent = 'Sending...';
+
+                fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+                    .then(() => {
+                        msg.textContent = 'Message sent!';
+                        setTimeout(() => {
+                            msg.textContent = '';
+                        }, 5000);
+                        form.reset();
+                    })
+                    .catch(error => {
+                        msg.textContent = 'Message could not be sent. Please email me directly.';
+                        console.error('Error!', error.message);
+                    });
+            });
+        }
+    </script>
+</body>
+</html>

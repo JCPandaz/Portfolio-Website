@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Joseph Casino is a Safety Service Engineer with experience in embedded systems, hardware, software, automation, and machine safety.">
+    <link rel="icon" href="/static/Images/JC.png" type="image/png">
+    <link rel="preload" href="/static/Images/Website_Header.png" as="image">
+    <title>Autonomous LiDAR Mapping Car | Joseph Casino</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body class="">
+    <header id="header" class="site-header">
+        <div class="nav-container">
+            <nav aria-label="Primary navigation">
+                <a href="/" class="brand" aria-label="Joseph Casino home">
+                    <img src="/static/Images/JC.png" class="logo" alt="JC monogram">
+                </a>
+                <button class="menu-toggle" type="button" aria-label="Open navigation" aria-controls="phonemenu" aria-expanded="false">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <ul id="phonemenu" class="nav-links">
+                    
+                    <li><a href="/" class="">Home</a></li>
+                    
+                    <li><a href="/about" class="">About</a></li>
+                    
+                    <li><a href="/experience" class="">Experience</a></li>
+                    
+                    <li><a href="/education" class="">Education</a></li>
+                    
+                    <li><a href="/projects" class="">Projects</a></li>
+                    
+                    <li><a href="/socials" class="">Socials</a></li>
+                    
+                    <li><a href="/contact" class="">Contact</a></li>
+                    
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        
+<section class="page-hero project-detail-hero">
+    <div class="container project-detail-grid">
+        <div class="page-copy reveal">
+            <a href="/projects" class="back-link">Back to projects</a>
+            <div class="project-title-block">
+                <p class="eyebrow">Robotics &amp; Autonomy</p>
+                <h1>Autonomous LiDAR Mapping Car</h1>
+                <p>Autonomous systems work involving ROS, Gazebo, LiDAR, localization, mapping, pure pursuit, lane detection, and particle filters.</p>
+                <div class="tag-row">
+                    
+                    <span>ROS</span>
+                    
+                    <span>LiDAR</span>
+                    
+                    <span>Autonomy</span>
+                    
+                </div>
+                
+            </div>
+        </div>
+        <div class="project-media reveal">
+            
+            <img src="/static/Images/484.png" alt="Autonomous LiDAR Mapping Car">
+            
+        </div>
+    </div>
+</section>
+
+<section class="content-section">
+    <div class="container detail-card project-highlights-card reveal">
+        <div>
+            <span class="project-highlight-title">Highlights</span>
+        </div>
+        <ul>
+            
+            <li>Worked with ROS, Gazebo, LiDAR, and vehicle control algorithms for autonomous vehicle development.</li>
+            
+            <li>Implemented and studied pure pursuit control, particle filter localization, mapping, and perception.</li>
+            
+            <li>Applied software, robotics, and control theory to autonomous driving simulations and robotic systems.</li>
+            
+        </ul>
+    </div>
+</section>
+
+<section class="content-section">
+    <div class="container">
+        <div class="section-heading reveal">
+            <p class="section-kicker">More</p>
+            <h2 class="sub-title">Other Projects</h2>
+        </div>
+        <div class="mini-project-grid">
+            
+            <a href="/projects/impact-insoles" class="mini-project reveal">
+                <span>Senior Design</span>
+                <strong>Impact Insoles</strong>
+            </a>
+            
+            <a href="/projects/atat-walker" class="mini-project reveal">
+                <span>Embedded Systems and Robotics</span>
+                <strong>AT-AT Walker</strong>
+            </a>
+            
+            <a href="/projects/risc-v-operating-system" class="mini-project reveal">
+                <span>Systems Software</span>
+                <strong>RISC-V Operating System</strong>
+            </a>
+            
+            <a href="/projects/systemverilog-tetris" class="mini-project reveal">
+                <span>Digital Design</span>
+                <strong>SystemVerilog Tetris</strong>
+            </a>
+            
+            <a href="/projects/mtd-bus-led-tracker" class="mini-project reveal">
+                <span>Embedded Systems</span>
+                <strong>MTD Bus LED Tracker</strong>
+            </a>
+            
+            <a href="/projects/object-tracking-camera" class="mini-project reveal">
+                <span>FPGA Vision</span>
+                <strong>Real-Time Object Tracking Camera</strong>
+            </a>
+            
+            <a href="/projects/python-pokedex" class="mini-project reveal">
+                <span>Desktop Application</span>
+                <strong>Python Pokedex</strong>
+            </a>
+            
+            <a href="/projects/personal-portfolio-website" class="mini-project reveal">
+                <span>Web Development</span>
+                <strong>Personal Portfolio Website</strong>
+            </a>
+            
+        </div>
+    </div>
+</section>
+
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <p>&copy; 2026 - Joseph Casino. Kachow!</p>
+        </div>
+    </footer>
+
+    <script>
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navLinks = document.getElementById('phonemenu');
+
+        function setMenu(open) {
+            navLinks.classList.toggle('is-open', open);
+            menuToggle.classList.toggle('is-open', open);
+            menuToggle.setAttribute('aria-expanded', String(open));
+            menuToggle.setAttribute('aria-label', open ? 'Close navigation' : 'Open navigation');
+        }
+
+        menuToggle.addEventListener('click', () => {
+            setMenu(!navLinks.classList.contains('is-open'));
+        });
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', event => {
+                const target = document.querySelector(anchor.getAttribute('href'));
+
+                if (!target) {
+                    return;
+                }
+
+                event.preventDefault();
+                window.scrollTo({
+                    top: target.getBoundingClientRect().top + window.scrollY - 96,
+                    behavior: 'smooth'
+                });
+                setMenu(false);
+            });
+        });
+
+        const revealItems = document.querySelectorAll('.reveal');
+
+        if ('IntersectionObserver' in window) {
+            const revealObserver = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        revealObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.14 });
+
+            revealItems.forEach(item => revealObserver.observe(item));
+        } else {
+            revealItems.forEach(item => item.classList.add('is-visible'));
+        }
+
+        const form = document.forms['submit-to-google-sheet'];
+        const msg = document.getElementById('msg');
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbwSoSsLYrVtpNyfQXjS7D5I4TIleF0uIjz1uC3u7a1HLdRMJP9hs7-D_TWmDptOIsvRrA/exec';
+
+        if (form && msg) {
+            form.addEventListener('submit', event => {
+                event.preventDefault();
+                msg.textContent = 'Sending...';
+
+                fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+                    .then(() => {
+                        msg.textContent = 'Message sent!';
+                        setTimeout(() => {
+                            msg.textContent = '';
+                        }, 5000);
+                        form.reset();
+                    })
+                    .catch(error => {
+                        msg.textContent = 'Message could not be sent. Please email me directly.';
+                        console.error('Error!', error.message);
+                    });
+            });
+        }
+    </script>
+</body>
+</html>
