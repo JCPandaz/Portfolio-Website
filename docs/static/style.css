@@ -1640,15 +1640,23 @@ form .btn2 {
 
     .nav-links.is-open {
         display: grid;
+        justify-items: center;
         gap: 6px;
+    }
+
+    .nav-links li {
+        width: 100%;
+        display: flex;
+        justify-content: center;
     }
 
     .nav-links a {
         display: flex;
-        width: 100%;
+        width: min(100%, 280px);
         min-height: 46px;
         padding: 12px 14px;
         font-size: 0.94rem;
+        text-align: center;
         justify-content: center;
         white-space: normal;
     }
